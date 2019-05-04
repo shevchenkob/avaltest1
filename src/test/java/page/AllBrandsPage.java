@@ -21,17 +21,47 @@ public class AllBrandsPage {
     @FindBy (xpath = "//div[@name='more_goods']")
     private WebElement moreGoods;
 
+    //START - Will be part of input in dataprovider//
+    @FindBy (xpath = "//a[@name='producer_4']")
+    private WebElement asus;
+
+    @FindBy (xpath = "//a[@name='processor_6268']")
+    private WebElement intelCoreI7;
+
+    @FindBy (xpath = "//input[@id='price[min]']")
+    private WebElement minPrice;
+
+    @FindBy (xpath = "//input[@id='price[max]']")
+    private WebElement maxPrice;
+
+    @FindBy (xpath = "//button[@id='submitprice']")
+    private WebElement submitPrice;
+
+    @FindBy (xpath = "//div[@class='g-i-tile-i-title clearfix']")
+    private WebElement oneNotebook;
+
+    //END - Will be part of input in dataprovider//
+
     public AllBrandsPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-public CartPage selectParams (WebElement brand, WebElement processor, String minPrice, String maxPrice) {
+public OneProductPage selectParams ()
+        //(WebElement brand, WebElement processor, String minPrice, String maxPrice)
+{
         moreProcessors.click();
         diagonal.click();
         ram.click();
 
-    return new CartPage (driver);
+        asus.click();
+        intelCoreI7.click();
+        minPrice.sendKeys("25000");
+        maxPrice.sendKeys("55000");
+        submitPrice.click();
+        oneNotebook.click();
+
+    return new OneProductPage (driver);
 }
 
     public boolean isPageLoaded() {
