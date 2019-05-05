@@ -47,18 +47,23 @@ public class AllBrandsPage {
         PageFactory.initElements(driver, this);
     }
 
-public OneProductPage selectParams ()
-        //(WebElement brand, WebElement processor, String minPrice, String maxPrice)
+public OneProductPage selectParams () throws InterruptedException
+//(WebElement brand, WebElement processor, String minPrice, String maxPrice)
 {
         moreProcessors.click();
+        Thread.sleep(3000);
         diagonal.click();
+        Thread.sleep(3000);
         ram.click();
 
         asus.click();
+        Thread.sleep(3000);
         intelCoreI7.click();
+        Thread.sleep(3000);
         minPrice.sendKeys("25000");
         maxPrice.sendKeys("55000");
         submitPrice.click();
+        Thread.sleep(3000);
         oneNotebook.click();
 
     return new OneProductPage (driver);
