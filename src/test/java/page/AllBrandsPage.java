@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import javax.xml.xpath.XPath;
+
 public class AllBrandsPage {
     private WebDriver driver;
 
@@ -22,17 +24,17 @@ public class AllBrandsPage {
     private WebElement moreGoods;
 
     //START - Will be part of input in dataprovider//
-    @FindBy (xpath = "//a[@name='producer_4']")
-    private WebElement asus;
-
-    @FindBy (xpath = "//a[@name='processor_6268']")
-    private WebElement intelCoreI7;
-
+//    @FindBy (xpath = "//a[@name='producer_4']")
+//    public WebElement asus;
+//
+//    @FindBy (xpath = "//a[@name='processor_6268']")
+//    private WebElement intelCoreI7;
+//
     @FindBy (xpath = "//input[@id='price[min]']")
-    private WebElement minPrice;
+    private WebElement minPriceField;
 
     @FindBy (xpath = "//input[@id='price[max]']")
-    private WebElement maxPrice;
+    private WebElement maxPriceField;
 
     @FindBy (xpath = "//button[@id='submitprice']")
     private WebElement submitPrice;
@@ -47,21 +49,29 @@ public class AllBrandsPage {
         PageFactory.initElements(driver, this);
     }
 
-public OneProductPage selectParams () throws InterruptedException
-//(WebElement brand, WebElement processor, String minPrice, String maxPrice)
+public OneProductPage selectParams (WebElement brand, WebElement processor, String minPrice) throws InterruptedException
+
 {
+
         moreProcessors.click();
         Thread.sleep(3000);
         diagonal.click();
         Thread.sleep(3000);
         ram.click();
+        Thread.sleep(3000);
 
-        asus.click();
-        Thread.sleep(3000);
-        intelCoreI7.click();
-        Thread.sleep(3000);
-        minPrice.sendKeys("25000");
-        maxPrice.sendKeys("55000");
+    brand.click();
+    Thread.sleep(3000);
+    processor.click();
+    Thread.sleep(3000);
+    minPriceField.sendKeys(minPrice);
+
+       // asus.click();
+        //Thread.sleep(3000);
+       // intelCoreI7.click();
+       // Thread.sleep(3000);
+       // minPrice.sendKeys("25000");
+        maxPriceField.sendKeys("55000");
         submitPrice.click();
         Thread.sleep(3000);
         oneNotebook.click();

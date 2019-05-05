@@ -12,7 +12,7 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
-        private static WebDriver driver;
+        public static WebDriver driver;
         StartPage startPage;
 
         @BeforeMethod
