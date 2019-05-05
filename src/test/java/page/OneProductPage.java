@@ -19,4 +19,8 @@ public class OneProductPage {
     public void buy (){
         buyButton.click();
     }
+    public boolean isPageLoaded() {
+        return buyButton.isDisplayed()
+                && driver.getTitle().contains("Ноутбук");
+    }
 }
