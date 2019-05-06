@@ -1,0 +1,27 @@
+<!--src/test/resources/launchers/google.xml-->
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="ShopTest" verbose="1" parallel="tests">
+    <parameter name="url" value="https://rozetka.com.ua"/>
+    <parameter name="os" value="windows"/>
+    <parameter name="node" value="http://192.168.56.1:4444"/>
+
+    <test name="Tests on Firefox" preserve-order="true" group-by-instances="true">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="test.ShopTest"/>
+        </classes>
+    </test>
+    <!--<test name="Tests on IE11" preserve-order="true" group-by-instances="true">-->
+        <!--<parameter name="browser" value="ie11"/>-->
+        <!--<classes>-->
+            <!--<class name="ShopTest"/>-->
+        <!--</classes>-->
+    <!--</test>-->
+    <test name="Tests on Chrome" preserve-order="true" group-by-instances="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="test.ShopTest"/>
+        </classes>
+    </test>
+</suite>

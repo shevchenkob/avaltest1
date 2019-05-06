@@ -1,21 +1,26 @@
 package test;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import base.SetupTestDriver;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import page.AllBrandsPage;
-import page.AllNotebooksPage;
-import page.CheckOutPage;
-import page.OneProductPage;
+import page.*;
 
-import javax.xml.xpath.XPath;
+
+import java.net.MalformedURLException;
 
 
 public class ShopTest extends BaseTest {
 
+    @BeforeClass(alwaysRun = true)
+    @Parameters({"os", "browser", "url", "node"})
+    public void setUp(String os, String browser, String url, String node) throws MalformedURLException {
+        SetupTestDriver setupTestDriver = new SetupTestDriver(os, browser, url, node);
+        driver = setupTestDriver.getDriver();
+        startPage = new StartPage(driver);
+    }
 
     @DataProvider
     public Object[][] ValidData() {
@@ -29,7 +34,6 @@ public class ShopTest extends BaseTest {
     }
     @Test(dataProvider = "ValidData", priority = 1)
     public void testShopping(String brand, String processor, String minPrice, String maxPrice) throws InterruptedException {
-
 
         Assert.assertTrue(startPage.isPageLoaded(), "Page https://rozetka.com.ua is not loaded.");
         AllNotebooksPage allNotebooksPage = startPage.navigateToNotebooks();
