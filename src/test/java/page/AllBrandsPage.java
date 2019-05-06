@@ -42,6 +42,12 @@ public class AllBrandsPage {
     @FindBy (xpath = "//div[@class='g-i-tile-i-title clearfix']")
     private WebElement oneNotebook;
 
+    @FindBy (xpath = "//ul[@id='sort_producer']")
+    private WebElement producerListRoot;
+
+    @FindBy (xpath = "//ul[@id='sort_processor']")
+    private WebElement processorsListRoot;
+
     //END - Will be part of input in dataprovider//
 
     public AllBrandsPage(WebDriver driver) {
@@ -49,32 +55,24 @@ public class AllBrandsPage {
         PageFactory.initElements(driver, this);
     }
 
-public OneProductPage selectParams (WebElement brand, WebElement processor, String minPrice) throws InterruptedException
+public OneProductPage selectParams (String brand, String processor, String minPrice, String maxPrice) throws InterruptedException
 
 {
-
-        moreProcessors.click();
-        Thread.sleep(3000);
-        diagonal.click();
-        Thread.sleep(3000);
-        ram.click();
-        Thread.sleep(3000);
-
-    brand.click();
+    producerListRoot.findElement(By.xpath("//ul[@id='sort_producer']//*[contains(text(),'"+brand+"')]/ancestor:: a")).click();
     Thread.sleep(3000);
-    processor.click();
+    diagonal.click();
+    Thread.sleep(3000);
+    moreProcessors.click();
+    Thread.sleep(3000);
+    processorsListRoot.findElement(By.xpath("//ul[@id='sort_processor']//*[contains(text(),'"+processor+"')]/ancestor:: a")).click();
+    Thread.sleep(3000);
+    ram.click();
     Thread.sleep(3000);
     minPriceField.sendKeys(minPrice);
-
-       // asus.click();
-        //Thread.sleep(3000);
-       // intelCoreI7.click();
-       // Thread.sleep(3000);
-       // minPrice.sendKeys("25000");
-        maxPriceField.sendKeys("55000");
-        submitPrice.click();
-        Thread.sleep(3000);
-        oneNotebook.click();
+    maxPriceField.sendKeys(maxPrice);
+    submitPrice.click();
+    Thread.sleep(3000);
+    oneNotebook.click();
 
     return new OneProductPage (driver);
 }
