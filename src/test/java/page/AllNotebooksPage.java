@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utilities.Log;
 
 public class AllNotebooksPage extends BasePage{
 
@@ -18,6 +19,7 @@ public class AllNotebooksPage extends BasePage{
 
     public AllBrandsPage navigateToNotebooks (){
         allBrands.click();
+        Log.startLog("Click to All Notebooks to navigate into table view");
         return new AllBrandsPage (driver);
     }
 

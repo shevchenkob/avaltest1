@@ -11,8 +11,8 @@ public abstract class BasePage {
 
     protected abstract boolean isPageLoaded();
 
-    protected void waitUntilElementIsWisible (WebElement webElement, int timeOutInSeconds) {
+    public void waitUntilElementIsVisible(WebElement webElement, int timeOutInSeconds) {
         WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
-        wait.until(ExpectedConditions.visibilityOf(webElement));
+        wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 }

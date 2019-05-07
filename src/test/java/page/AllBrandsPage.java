@@ -6,8 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import javax.xml.xpath.XPath;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import utilities.Log;
 
 public class AllBrandsPage extends BasePage{
 
@@ -48,26 +49,36 @@ public class AllBrandsPage extends BasePage{
         PageFactory.initElements(driver, this);
     }
 
-public OneProductPage selectParams (String brand, String processor, String minPrice, String maxPrice) throws InterruptedException
 
-{
+public OneProductPage selectParams (String brand, String processor, String minPrice, String maxPrice) {
     producerListRoot.findElement(By.xpath("//ul[@id='sort_producer']//*[contains(text(),'"+brand+"')]/ancestor:: a")).click();
-    waitUntilElementIsWisible(diagonal, 15);
+    Log.startLog("Select brand according to test parameters");
+    waitUntilElementIsVisible(diagonal, 20);
     diagonal.click();
-    waitUntilElementIsWisible(moreProcessors, 15);
+    Log.startLog("Select screen diagonal according to test parameters");
+    waitUntilElementIsVisible(moreProcessors, 20);
     moreProcessors.click();
-    waitUntilElementIsWisible(processorsListRoot, 15);
+    Log.startLog("Extend list of processors to show all");
+    waitUntilElementIsVisible(processorsListRoot, 20);
     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", processorsListRoot);
+    Log.startLog("Scroll down to necessary processor checkbox will be visible");
     processorsListRoot.findElement(By.xpath("//ul[@id='sort_processor']//*[contains(text(),'"+processor+"')]/ancestor:: a")).click();
-    waitUntilElementIsWisible(processorsListRoot, 15);
+    Log.startLog("Select processor according to test parameters");
+    waitUntilElementIsVisible(processorsListRoot, 20);
     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ram);
+    Log.startLog("Scroll down to necessary ram checkbox will be visible");
     ram.click();
-    waitUntilElementIsWisible(ram, 15);
+    Log.startLog("Select ram according to test parameters");
+    waitUntilElementIsVisible(ram, 20);
     minPriceField.sendKeys(minPrice);
+    Log.startLog("Fill minPrice field with value according to test parameters");
     maxPriceField.sendKeys(maxPrice);
+    Log.startLog("Fill maxPrice field with value according to test parameters");
     submitPrice.click();
-    waitUntilElementIsWisible(oneNotebook, 15);
+    Log.startLog("Click submit price button");
+    waitUntilElementIsVisible(oneNotebook, 20);
     oneNotebook.click();
+    Log.startLog("Click on the first notebook that fit selected criteria");
 
     return new OneProductPage (driver);
 }

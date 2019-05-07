@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class StartPage extends BasePage{
+public class StartPage {
     private WebDriver driver;
 
     @FindBy(xpath = "//span[@class='menu-toggler__text']")
@@ -23,7 +23,7 @@ public class StartPage extends BasePage{
         catalogue.click();
         allNotebooks.click();
         return new AllNotebooksPage (driver);
-}
+    }
 
     public boolean isPageLoaded() {
         return catalogue.isDisplayed()

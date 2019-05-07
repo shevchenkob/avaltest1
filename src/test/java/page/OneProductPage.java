@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utilities.Log;
 
 public class OneProductPage extends BasePage{
     private WebDriver driver;
@@ -18,6 +19,7 @@ public class OneProductPage extends BasePage{
 
     public CheckOutPage buy (){
         buyButton.click();
+        Log.startLog("Click buy button");
         return new CheckOutPage (driver);
     }
 
