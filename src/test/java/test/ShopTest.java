@@ -2,10 +2,7 @@ package test;
 
 import base.SetupTestDriver;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import page.*;
 
 
@@ -14,14 +11,13 @@ import java.net.MalformedURLException;
 
 public class ShopTest extends BaseTest {
 
-    @BeforeClass(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     @Parameters({"os", "browser", "url", "node"})
     public void setUp(String os, String browser, String url, String node) throws MalformedURLException {
         SetupTestDriver setupTestDriver = new SetupTestDriver(os, browser, url, node);
         driver = setupTestDriver.getDriver();
         startPage = new StartPage(driver);
     }
-
     @DataProvider
     public Object[][] ValidData() {
        return new Object[][]{
@@ -29,8 +25,6 @@ public class ShopTest extends BaseTest {
                 {"Dell", "Intel Core i5", "35000", "55000"},
 
         };
-
-
     }
     @Test(dataProvider = "ValidData", priority = 1)
     public void testShopping(String brand, String processor, String minPrice, String maxPrice) throws InterruptedException {
@@ -45,4 +39,5 @@ public class ShopTest extends BaseTest {
         CheckOutPage checkOutPage = oneProductPage.buy();
         Assert.assertTrue(checkOutPage.isPageLoaded(), "Checkout page is not displayed.");
     }
+
 }

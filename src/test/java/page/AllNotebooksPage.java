@@ -5,8 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AllNotebooksPage {
-    private WebDriver driver;
+public class AllNotebooksPage extends BasePage{
+
 
     @FindBy (xpath = ".//div[contains(@class, 'p-auto-block p-auto-block-1')]//span[@class='arrow-link-inner']")
     private WebElement allBrands;

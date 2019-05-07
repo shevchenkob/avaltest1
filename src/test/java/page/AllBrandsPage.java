@@ -1,6 +1,7 @@
 package page;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,8 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import javax.xml.xpath.XPath;
 
-public class AllBrandsPage {
-    private WebDriver driver;
+public class AllBrandsPage extends BasePage{
+
 
     @FindBy (xpath = ".//div[contains(@param, 'processor')]//a[@name='show_more_parameters']")
     private WebElement moreProcessors;
@@ -23,13 +24,6 @@ public class AllBrandsPage {
     @FindBy (xpath = "//div[@name='more_goods']")
     private WebElement moreGoods;
 
-    //START - Will be part of input in dataprovider//
-//    @FindBy (xpath = "//a[@name='producer_4']")
-//    public WebElement asus;
-//
-//    @FindBy (xpath = "//a[@name='processor_6268']")
-//    private WebElement intelCoreI7;
-//
     @FindBy (xpath = "//input[@id='price[min]']")
     private WebElement minPriceField;
 
@@ -39,7 +33,8 @@ public class AllBrandsPage {
     @FindBy (xpath = "//button[@id='submitprice']")
     private WebElement submitPrice;
 
-    @FindBy (xpath = "//div[@class='g-i-tile-i-title clearfix']")
+    @FindBy (xpath = "//div[@class='toOrder']")
+    //@FindBy (xpath = "//span[@class='g-buy-submit-link']")
     private WebElement oneNotebook;
 
     @FindBy (xpath = "//ul[@id='sort_producer']")
@@ -47,8 +42,6 @@ public class AllBrandsPage {
 
     @FindBy (xpath = "//ul[@id='sort_processor']")
     private WebElement processorsListRoot;
-
-    //END - Will be part of input in dataprovider//
 
     public AllBrandsPage(WebDriver driver) {
         this.driver = driver;
@@ -59,19 +52,21 @@ public OneProductPage selectParams (String brand, String processor, String minPr
 
 {
     producerListRoot.findElement(By.xpath("//ul[@id='sort_producer']//*[contains(text(),'"+brand+"')]/ancestor:: a")).click();
-    Thread.sleep(3000);
+    waitUntilElementIsWisible(diagonal, 15);
     diagonal.click();
-    Thread.sleep(3000);
+    waitUntilElementIsWisible(moreProcessors, 15);
     moreProcessors.click();
-    Thread.sleep(3000);
+    waitUntilElementIsWisible(processorsListRoot, 15);
+    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", processorsListRoot);
     processorsListRoot.findElement(By.xpath("//ul[@id='sort_processor']//*[contains(text(),'"+processor+"')]/ancestor:: a")).click();
-    Thread.sleep(3000);
+    waitUntilElementIsWisible(processorsListRoot, 15);
+    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ram);
     ram.click();
-    Thread.sleep(3000);
+    waitUntilElementIsWisible(ram, 15);
     minPriceField.sendKeys(minPrice);
     maxPriceField.sendKeys(maxPrice);
     submitPrice.click();
-    Thread.sleep(3000);
+    waitUntilElementIsWisible(oneNotebook, 15);
     oneNotebook.click();
 
     return new OneProductPage (driver);

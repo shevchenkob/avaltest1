@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CheckOutPage {
+public class CheckOutPage extends BasePage{
     private WebDriver driver;
 
     @FindBy(xpath = "//div[@class='toOrder ng-star-inserted']")
