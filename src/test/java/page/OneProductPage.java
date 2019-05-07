@@ -19,7 +19,7 @@ public class OneProductPage extends BasePage{
 
     public CheckOutPage buy (){
         buyButton.click();
-        Log.startLog("Click buy button");
+        Log.info("Click buy button");
         return new CheckOutPage (driver);
     }
 

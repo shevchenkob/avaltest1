@@ -4,8 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utilities.Log;
 
-public class StartPage {
+public class StartPage extends BasePage{
     private WebDriver driver;
 
     @FindBy(xpath = "//span[@class='menu-toggler__text']")
@@ -21,13 +22,16 @@ public class StartPage {
     }
     public AllNotebooksPage navigateToNotebooks (){
         catalogue.click();
+        Log.info("Navigate and click catalogue");
         allNotebooks.click();
+        Log.info("Click to notebooks directory in catalogue");
         return new AllNotebooksPage (driver);
-    }
+}
 
     public boolean isPageLoaded() {
         return catalogue.isDisplayed()
                 && driver.getCurrentUrl().contains("rozetka.com.ua")
                 && driver.getTitle().contains("ROZETKA");
+
     }
 }

@@ -19,7 +19,7 @@ public class AllNotebooksPage extends BasePage{
 
     public AllBrandsPage navigateToNotebooks (){
         allBrands.click();
-        Log.startLog("Click to All Notebooks to navigate into table view");
+        Log.info("Click to All Notebooks to navigate into table view");
         return new AllBrandsPage (driver);
     }
 

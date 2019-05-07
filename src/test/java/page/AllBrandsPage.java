@@ -52,33 +52,33 @@ public class AllBrandsPage extends BasePage{
 
 public OneProductPage selectParams (String brand, String processor, String minPrice, String maxPrice) {
     producerListRoot.findElement(By.xpath("//ul[@id='sort_producer']//*[contains(text(),'"+brand+"')]/ancestor:: a")).click();
-    Log.startLog("Select brand according to test parameters");
+    Log.info("Select brand according to test parameters");
     waitUntilElementIsVisible(diagonal, 20);
     diagonal.click();
-    Log.startLog("Select screen diagonal according to test parameters");
+    Log.info("Select screen diagonal according to test parameters");
     waitUntilElementIsVisible(moreProcessors, 20);
     moreProcessors.click();
-    Log.startLog("Extend list of processors to show all");
+    Log.info("Extend list of processors to show all");
     waitUntilElementIsVisible(processorsListRoot, 20);
     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", processorsListRoot);
-    Log.startLog("Scroll down to necessary processor checkbox will be visible");
+    Log.info("Scroll down to necessary processor checkbox will be visible");
     processorsListRoot.findElement(By.xpath("//ul[@id='sort_processor']//*[contains(text(),'"+processor+"')]/ancestor:: a")).click();
-    Log.startLog("Select processor according to test parameters");
+    Log.info("Select processor according to test parameters");
     waitUntilElementIsVisible(processorsListRoot, 20);
     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ram);
-    Log.startLog("Scroll down to necessary ram checkbox will be visible");
+    Log.info("Scroll down to necessary ram checkbox will be visible");
     ram.click();
-    Log.startLog("Select ram according to test parameters");
+    Log.info("Select ram according to test parameters");
     waitUntilElementIsVisible(ram, 20);
     minPriceField.sendKeys(minPrice);
-    Log.startLog("Fill minPrice field with value according to test parameters");
+    Log.info("Fill minPrice field with value according to test parameters");
     maxPriceField.sendKeys(maxPrice);
-    Log.startLog("Fill maxPrice field with value according to test parameters");
+    Log.info("Fill maxPrice field with value according to test parameters");
     submitPrice.click();
-    Log.startLog("Click submit price button");
+    Log.info("Click submit price button");
     waitUntilElementIsVisible(oneNotebook, 20);
     oneNotebook.click();
-    Log.startLog("Click on the first notebook that fit selected criteria");
+    Log.info("Click on the first notebook that fit selected criteria");
 
     return new OneProductPage (driver);
 }
