@@ -36,7 +36,6 @@ public class SetupTestDriver {
         } else {
             InternetExplorerOptions ieOption = new InternetExplorerOptions();
             ieOption.setCapability("platform", platform);
-           // this.driver = new RemoteWebDriver(new URL(node + "/wd/hub"), ieOption);
             driver = new RemoteWebDriver(new URL("http://192.168.56.1:4444/wd/hub"), ieOption);
         }
 

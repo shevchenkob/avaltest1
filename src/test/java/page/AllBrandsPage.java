@@ -6,8 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.Log;
 
 public class AllBrandsPage extends BasePage{
@@ -35,7 +33,6 @@ public class AllBrandsPage extends BasePage{
     private WebElement submitPrice;
 
     @FindBy (xpath = "//div[@class='toOrder']")
-    //@FindBy (xpath = "//span[@class='g-buy-submit-link']")
     private WebElement oneNotebook;
 
     @FindBy (xpath = "//ul[@id='sort_producer']")
