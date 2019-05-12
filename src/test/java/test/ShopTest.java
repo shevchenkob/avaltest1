@@ -1,29 +1,21 @@
 package test;
 
-import base.SetupTestDriver;
+
 import org.testng.Assert;
 import org.testng.annotations.*;
 import page.*;
 import utilities.Log;
 
 
-import java.net.MalformedURLException;
-
 
 public class ShopTest extends BaseTest {
 
-    @BeforeMethod(alwaysRun = true)
-    @Parameters({"os", "browser", "url", "node"})
-    public void setUp(String os, String browser, String url, String node) throws MalformedURLException {
-        SetupTestDriver setupTestDriver = new SetupTestDriver(os, browser, url, node);
-        driver = setupTestDriver.getDriver();
-        startPage = new StartPage(driver);
-    }
+
     @DataProvider
     public Object[][] ValidData() {
        return new Object[][]{
                 {"Asus", "Intel Core i7", "25000", "55000"},
-                {"Dell", "Intel Core i5", "35000", "55000"},
+               // {"Dell", "Intel Core i5", "35000", "55000"},
 
         };
     }
