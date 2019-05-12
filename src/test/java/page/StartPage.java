@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import utilities.Log;
 
 public class StartPage extends BasePage{
-    private WebDriver driver;
+
 
     @FindBy(xpath = "//span[@class='menu-toggler__text']")
     private WebElement catalogue;

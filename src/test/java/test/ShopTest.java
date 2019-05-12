@@ -15,7 +15,7 @@ public class ShopTest extends BaseTest {
     public Object[][] ValidData() {
        return new Object[][]{
                 {"Asus", "Intel Core i7", "25000", "55000"},
-               // {"Dell", "Intel Core i5", "35000", "55000"},
+                {"Dell", "Intel Core i5", "35000", "55000"},
 
         };
     }
